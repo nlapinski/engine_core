@@ -1,0 +1,4 @@
+[submodule "modules/imgui-node-editor"]
+	path = modules/imgui-node-editor
+	url = https://github.com/nlapinski/imgui-node-editor.git
+	branch = docking
