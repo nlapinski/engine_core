@@ -9,10 +9,18 @@ find_package(bgfx REQUIRED CONFIG CMAKE_FIND_ROOT_PATH_BOTH)
 find_package(imgui REQUIRED CONFIG CMAKE_FIND_ROOT_PATH_BOTH)
 find_package(libtcc REQUIRED CONFIG CMAKE_FIND_ROOT_PATH_BOTH)
 
+include_directories("third-party/build/cmakefied-prefix/src/imgui")
+include_directories("third-party/build/include")
+
 
 set(CMAKE_CXX_FLAGS "-fpermissive")
 
-include_directories("third-party/build/cmakefied-prefix/src/imgui")
+add_subdirectory(modules/imgui-node-editor/NodeEditor)
+include_directories("modules/imgui-node-editor/NodeEditor/Include")
+list(APPEND CMAKE_MODULE_PATH ${CMAKE_SOURCE_DIR}/modules/imgui-node-editor/Support/CmakeModules)
+    find_package(imgui_node_editor REQUIRED)
+
+
 include_directories("src")
 include_directories("src/window")
 include_directories("src/ui")
@@ -29,6 +37,8 @@ target_link_libraries(${PROJECT_NAME} PRIVATE SDL2::SDL2-static SDL2::SDL2main
                                               bgfx::bgfx bgfx::bx imgui::imgui)
 
 target_link_libraries(${PROJECT_NAME} PRIVATE libtcc)
+target_link_libraries(${PROJECT_NAME} PRIVATE imgui_node_editor)
+
 
 set_target_properties(
   ${PROJECT_NAME}
