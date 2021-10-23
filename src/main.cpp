@@ -7,8 +7,6 @@
 #include "../bgfx/bgfx.h"
 #include "../bgfx/platform.h"
 #include "../bx/math.h"
-
-
 #include "../sdl-imgui/imgui_impl_sdl.h"
 
 

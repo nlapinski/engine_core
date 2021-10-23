@@ -22,6 +22,22 @@ else ()
 endif ()
 
 ExternalProject_Add(
+  libtcc
+  GIT_REPOSITORY https://github.com/nlapinski/libtcc-cmake.git
+  GIT_TAG master
+  BINARY_DIR ${CMAKE_CURRENT_BINARY_DIR}/libtcc/build/${build_type_dir}
+  INSTALL_DIR ${CMAKE_CURRENT_BINARY_DIR}
+  CMAKE_COMMAND ${THIRD_PARTY_CMAKE_COMMAND}
+  CMAKE_ARGS ${build_type_arg} -DCMAKE_INSTALL_PREFIX=<INSTALL_DIR>
+             "$<$<CONFIG:Debug>:-DCMAKE_DEBUG_POSTFIX=d>"
+             -DLIBTCC_INSTALL_RUNTIME=TRUE
+             -DLIBTCC_RUNTIME_PATH=TRUE
+             -DLIBTCC_TARGET_SPECIFIC_NAME=TRUE
+  BUILD_COMMAND cmake --build <BINARY_DIR>
+  INSTALL_COMMAND cmake --build <BINARY_DIR> --target install)
+
+
+ExternalProject_Add(
   SDL2
   URL https://www.libsdl.org/release/SDL2-2.0.14.tar.gz
   URL_HASH MD5=76ed4e6da9c07bd168b2acd9bfefab1b
@@ -34,7 +50,7 @@ ExternalProject_Add(
 
 ExternalProject_Add(
   bgfx
-  GIT_REPOSITORY https://github.com/pr0g/bgfx.cmake.git
+  GIT_REPOSITORY https://github.com/nlapinski/bgfx.cmake.git
   GIT_TAG 5e7ec5f7d783fb348608abc6f932a34b937f0115
   BINARY_DIR ${CMAKE_CURRENT_BINARY_DIR}/bgfx/build/${build_type_dir}
   INSTALL_DIR ${CMAKE_CURRENT_BINARY_DIR}
@@ -45,7 +61,7 @@ ExternalProject_Add(
              -DBGFX_OPENGL_VERSION=41
   BUILD_COMMAND cmake --build <BINARY_DIR>
   INSTALL_COMMAND cmake --build <BINARY_DIR> --target install)
-  
+
 ExternalProject_Add(
   cmakefied
   GIT_REPOSITORY https://github.com/nlapinski/cmakefied.git
@@ -60,3 +76,20 @@ ExternalProject_Add(
              -DIMGUI_DISABLE_OBSOLETE_FUNCTIONS=ON
   BUILD_COMMAND cmake --build <BINARY_DIR>
   INSTALL_COMMAND cmake --build <BINARY_DIR> --target install)
+
+
+  
+ExternalProject_Add(
+  glm
+  GIT_REPOSITORY https://github.com/nlapinski/glm.git
+  GIT_TAG 6ad79aae3eb5bf809c30bf1168171e9e55857e45
+  BINARY_DIR ${CMAKE_CURRENT_BINARY_DIR}/glm/build/${build_type_dir}
+  INSTALL_DIR ${CMAKE_CURRENT_BINARY_DIR}
+  CMAKE_COMMAND ${THIRD_PARTY_CMAKE_COMMAND}
+  CMAKE_ARGS ${build_type_arg} -DCMAKE_INSTALL_PREFIX=<INSTALL_DIR>
+             "$<$<CONFIG:Debug>:-DCMAKE_DEBUG_POSTFIX=d>"
+  BUILD_COMMAND cmake --build <BINARY_DIR>
+  INSTALL_COMMAND cmake --build <BINARY_DIR> --target install)
+
+
+
