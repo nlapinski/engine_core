@@ -34,7 +34,8 @@ ExternalProject_Add(
 
 ExternalProject_Add(
   bgfx
-  GIT_REPOSITORY https://github.com/nlapinski/bgfx.cmake.git
+  GIT_REPOSITORY https://github.com/pr0g/bgfx.cmake.git
+  GIT_TAG 5e7ec5f7d783fb348608abc6f932a34b937f0115
   BINARY_DIR ${CMAKE_CURRENT_BINARY_DIR}/bgfx/build/${build_type_dir}
   INSTALL_DIR ${CMAKE_CURRENT_BINARY_DIR}
   CMAKE_COMMAND ${THIRD_PARTY_CMAKE_COMMAND}
@@ -44,10 +45,11 @@ ExternalProject_Add(
              -DBGFX_OPENGL_VERSION=41
   BUILD_COMMAND cmake --build <BINARY_DIR>
   INSTALL_COMMAND cmake --build <BINARY_DIR> --target install)
-
+  
 ExternalProject_Add(
   cmakefied
   GIT_REPOSITORY https://github.com/nlapinski/cmakefied.git
+  GIT_TAG 3c5e1b964a3aa5616879ae5220214e11903dcb18
   UPDATE_COMMAND cd <SOURCE_DIR> && bash git-clone.sh imgui && cd
                  ${CMAKE_SOURCE_DIR}
   SOURCE_SUBDIR ../imgui
@@ -58,4 +60,3 @@ ExternalProject_Add(
              -DIMGUI_DISABLE_OBSOLETE_FUNCTIONS=ON
   BUILD_COMMAND cmake --build <BINARY_DIR>
   INSTALL_COMMAND cmake --build <BINARY_DIR> --target install)
-
