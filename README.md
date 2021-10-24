@@ -9,7 +9,8 @@ There are a few .sh files that could be modified for various cmake commands on o
 
 Basic setup in a mingw shell:
 ```
-git clone https://github.com/nlapinski/engine_core.git
+git clone --recursive https://github.com/nlapinski/engine_core.git
+cd engine_core
 git submodule update --init --recursive
 cd third-party
 ./install.sh
