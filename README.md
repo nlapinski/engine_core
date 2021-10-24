@@ -1,5 +1,7 @@
 # engine_core
 
+Borrowed some stuff verbatim from https://github.com/pr0g/sdl-bgfx-imgui-starter mostly the setup scripts + the cmake scripts. This is setup as template for some graphics libraries for personal use.
+
 requires glm, sdl2, imgui (docking-layout custom branch), imgui-node-editor, bgfx (cmake branch), tinycc (for runtime C compilation)
 
 The third-party cmakelist should pull everything from various repos, build that then build the main program
