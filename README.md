@@ -20,4 +20,4 @@ cd ..
 ```
 ![nodebox](nodebox.png)
 
-I'm still fixing the install cmakes for tinycc - you might need to copy includes/lib to the buld folder from the tinycc build folder in third party
+I'm still fixing the install cmakes for tinycc - currently run.sh moves the required librarys and includes to the build for tinycc to compile stuff
