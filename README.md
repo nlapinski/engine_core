@@ -13,3 +13,4 @@ cd ..
 ./compile-shaders-win-glsl.bat
 ./run.sh
 ```
+![nodebox](nodebox.png)
