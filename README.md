@@ -15,7 +15,7 @@ git submodule update --init --recursive
 cd third-party
 ./install.sh
 cd ..
-./configure-ninja
+./configure-ninja.sh
 ./compile-shaders-win-glsl.bat
 ./run.sh
 ```
